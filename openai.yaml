@@ -1,0 +1,4 @@
+interface:
+  display_name: Landing Page Anchieta
+  short_description: Use when the user wants to create, build, or generate a landing page, LP, or conversion page for Grupo Anchieta.
+  default_prompt: Crie uma landing page para o Grupo Anchieta. Use /lp para iniciar o pipeline completo.
