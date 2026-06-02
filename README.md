@@ -2,67 +2,62 @@
 
 Landing page factory for Grupo Anchieta — a multi-subagent skill installable via `npx skills add`.
 
-Works with **Kimi Code**, **Claude Code**, **Codex**, **Cursor**, **OpenCode** and [50+ other agents](https://github.com/vercel-labs/skills#supported-agents).
+Works with **Kimi Code**, **Claude Code**, **Codex**, **Cursor** and [50+ other agents](https://github.com/vercel-labs/skills#supported-agents).
 
-## Install
+## Prerequisites
+
+Install all required skills globally first:
 
 ```bash
-# Install globally (available in all projects)
+# This skill
 npx skills add your-username/landing-page -g
 
-# Or project-local
-npx skills add your-username/landing-page
+# UI/UX design system generation (161 rules, 67 styles)
+npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max -g
+
+# Anthropic frontend design principles
+npx skills add https://github.com/openclaw/skills/tree/main/skills/qrucio/anthropic-frontend-design -g
+
+# Emil Kowalski design engineering (animations + polish)
+npx skills add https://github.com/emilkowalski/skill --skill emil-design-eng -g
 ```
 
-> **Prerequisite:** [Impeccable](https://github.com/pbakaus/impeccable) must be installed in your agent:
-> ```bash
-> npx skills add pbakaus/impeccable -g
-> ```
-
 ## Usage
-
-Once installed, trigger it with any of these in your agent:
 
 ```
 /lp
 /criarLP
-criar landing page
-criar uma LP para [project name]
+criar landing page para [project name]
 ```
 
-## What it does
-
-Runs a pipeline of 10 specialist subagents that build a production-ready HTML landing page:
+## Pipeline (asks for approval at every step)
 
 ```
 Orchestrator (SKILL.md)
+  │  ⏸️ = waits for user approval before advancing
   │
-  ├─ 01 · Briefing        → collects project context from user
-  ├─ 02 · CRM Form        → receives raw CRM form HTML from user
-  ├─ 03 · Strategy        → positioning, sections, conversion triggers
-  ├─ 04 · Copywriter      → all section texts + Anchieta institutional copy
-  ├─ 05 · UI/UX           → /impeccable shape + CSS design tokens
-  ├─ 06 · Images          → image URLs and alt text from user
-  ├─ 07 · SEO/GEO         → full <head> + JSON-LD Schema + GEO optimization
-  ├─ 08 · Developer       → /impeccable craft + typeset + layout + animate
-  ├─ 09 · Quality         → npx impeccable detect + /audit + /polish
-  └─ 10 · File            → saves .html and delivers
+  ├─ 01 · Briefing           ⏸️ full interview
+  ├─ 02 · CRM Form           ⏸️ receives raw form HTML
+  ├─ 03 · Strategy           ⏸️ approval
+  ├─ 04 · Copywriter         ⏸️ approval
+  ├─ 05 · UI/UX              ⏸️ skill:ui-ux-pro-max + skill:anthropic-frontend-design
+  ├─ 06 · Images             ⏸️ image URLs from user
+  ├─ 07 · SEO/GEO            ⏸️ approval
+  ├─ 08 · Developer          ⏸️ skill:emil-design-eng polish
+  ├─ 09 · Quality            ⏸️ skill:emil-design-eng review + a11y + responsive
+  └─ 10 · File               → delivers .html
 ```
 
-## Impeccable integration
+## Skills used and where
 
-| Subagent | Command | Purpose |
-|----------|---------|---------|
-| UI/UX | `/impeccable shape` | Plans UX/UI before any code |
-| Developer | `/impeccable craft` | Builds HTML with all 7 design refs loaded |
-| Developer | `/impeccable typeset` | Fixes typography hierarchy |
-| Developer | `/impeccable layout` | Fixes spacing and visual rhythm |
-| Developer | `/impeccable animate` | Adds purposeful motion |
-| Quality | `npx impeccable detect` | Catches 24 anti-patterns (no LLM) |
-| Quality | `/impeccable audit` | A11y + performance + responsive check |
-| Quality | `/impeccable polish` | Final design pass |
+| Skill | Where | What it does |
+|-------|-------|-------------|
+| `skill:ui-ux-pro-max` | SubAgente 05 (UI/UX) | Generates design system with 161 rules + 67 styles |
+| `skill:anthropic-frontend-design` | SubAgente 05 (UI/UX) | Validates design system with frontend best practices |
+| `skill:emil-design-eng` | SubAgente 08 (Developer) | Polishes animations, transitions, interaction states |
+| `skill:emil-design-eng` | SubAgente 09 (Quality) | Full Before/After design engineering review |
 
-## Anchieta brand rules (enforced on every page)
+## Anchieta brand (enforced on every page)
 
 | Element | Rule |
 |---------|------|
@@ -73,13 +68,13 @@ Orchestrator (SKILL.md)
 
 ## Output
 
-A single `.html` file — no build step, no dependencies, opens directly in any browser.
+Single `.html` file — no build step, opens in any browser.
 
 ## File structure
 
 ```
 landing-page/
-├── SKILL.md                      ← orchestrator + global rules
+├── SKILL.md                      ← orchestrator + approval protocol
 ├── openai.yaml                   ← Kimi Code interface metadata
 ├── README.md
 ├── reference/
@@ -89,14 +84,10 @@ landing-page/
     ├── 02-formulario-crm.md
     ├── 03-estrategia.md
     ├── 04-copywriter.md
-    ├── 05-uiux.md
+    ├── 05-uiux.md                ← ui-ux-pro-max + anthropic-frontend-design
     ├── 06-imagem.md
     ├── 07-seo.md
-    ├── 08-desenvolvedor.md
-    ├── 09-qualidade.md
+    ├── 08-desenvolvedor.md       ← emil-design-eng polish
+    ├── 09-qualidade.md           ← emil-design-eng review
     └── 10-arquivo.md
 ```
-
-## License
-
-MIT

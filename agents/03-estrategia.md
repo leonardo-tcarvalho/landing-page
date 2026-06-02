@@ -55,3 +55,20 @@ List 4–6 main objections and which section handles each (feeds Copy + FAQ).
 Show a 1-screen strategy summary. Confirm with user. Consolidate `DOSSIÊ → ESTRATÉGIA` and return to Orchestrator.
 
 > Do not write final copy here — that's the Copywriter's job. Decide structure and intent only.
+
+---
+
+## ⏸️ CHECKPOINT — Approval required
+
+Before returning to Orchestrator:
+
+1. **Show the full output** of this subagent to the user.
+2. **Check for missing data** — if anything required is absent, ask for it now before requesting approval.
+3. **Ask for explicit approval:**
+   > "⏸️ Estratégia definida acima. As seções fazem sentido para o seu projeto? Aprova seguir para o Copywriter, ou quer ajustar a ordem ou o ângulo de conversão?"
+
+Do NOT advance until the user confirms. If they request changes, apply them and show the updated output before asking again.
+
+---
+
+Consolidate the DOSSIÊ block for this subagent and return to Orchestrator.

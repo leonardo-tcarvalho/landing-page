@@ -3,61 +3,85 @@
 **INPUT:** `DOSSIÊ → BRIEFING` + `DOSSIÊ → ESTRATÉGIA` + `DOSSIÊ → COPY`
 **OUTPUT:** `DOSSIÊ → DESIGN`
 
-## Step 1 — /impeccable shape
+---
 
-Before specifying anything, invoke:
+## Step 1 — Context check (before starting)
+
+Verify the DOSSIÊ has:
+- [ ] Page type and audience defined
+- [ ] Brand colors (HEX) — if absent, ask the user now: "Tem alguma cor da marca pra eu usar? (ex: #1A2B3C). Se não, eu escolho uma paleta temática."
+- [ ] Tone defined (formal, friendly, technical, premium...)
+- [ ] Section order from ESTRATÉGIA
+
+If anything is missing, ask for it before proceeding. Do not assume.
+
+---
+
+## Step 2 — Design system with skill:ui-ux-pro-max
+
+Invoke the UI UX Pro Max skill with the project context:
 
 ```
-/impeccable shape
-[paste the page context: type, audience, section list, tone from the DOSSIÊ]
+skill:ui-ux-pro-max
+
+Project type: [from briefing]
+Industry: [from briefing]
+Target audience: [from briefing]
+Tone: [from briefing]
+Colors provided: [HEX values or "none — generate thematic palette"]
+Page sections: [ordered list from strategy]
+Output needed: complete design system with color tokens, typography scale, spacing, component styles
 ```
 
-`/impeccable shape` plans UX/UI before writing code. Record its full output in `DOSSIÊ → DESIGN` so the Developer receives it. It covers visual hierarchy, layout patterns, component recommendations and interaction flows.
+UI UX Pro Max has 161 reasoning rules and 67 UI styles — it will analyze the project context and recommend the most appropriate design system. Use its full output as the design foundation.
 
-## Step 2 — Color palette
+Key outputs to extract and record in DESIGN:
+- Color system (primary, secondary, accent, text, background tokens)
+- Typography (font choices, scale, line-height, letter-spacing)
+- Spacing system
+- Component style recommendations (buttons, cards, forms, sections)
+- Recommended UI style (from its 67 styles)
 
-- If user provided HEX: use as `--cor-primaria`, `--cor-secundaria`, `--cor-destaque`, derive light/dark tones.
-- If none: choose a thematic palette coherent with the segment.
-- Always verify **WCAG AA** contrast (4.5:1 for body text).
-- Impeccable anti-patterns to avoid: gray text on colored backgrounds, pure black/white (always tint), purple-to-blue gradients.
+---
 
-## Step 3 — Typography
+## Step 3 — Frontend design principles with skill:anthropic-frontend-design
 
-- Google Fonts (default: Inter). Display font for headlines if it fits the tone.
-- Fluid scale with `clamp()`: headline `clamp(2rem, 6vw, 4rem)`, hero max ≤ 6rem, body `1rem–1.125rem`.
-- Max 3 font families (display + body + optional mono).
-- Impeccable anti-patterns: don't pair fonts that are similar but not identical; cap hero at 6rem (above that it's shouting); letter-spacing floor ≥ -0.04em.
+After ui-ux-pro-max generates the design system, apply Anthropic's frontend design principles to validate and refine it:
 
-## Step 4 — Layout per section
+```
+skill:anthropic-frontend-design
 
-For each section from the ESTRATÉGIA, specify: layout, background, components, mobile behavior.
+Review this design system for a landing page and apply frontend design best practices:
+[paste ui-ux-pro-max output]
 
-**Anchieta-specific mandatory layouts:**
+Focus on: component hierarchy, visual consistency, accessibility, and production-readiness.
+```
 
-Header logo (80×80 px):
-- Dark header background → white logo
-- Light header background → blue logo
+Apply any refinements suggested to the design tokens.
 
-Institutional Anchieta section:
-- 2-column layout: text left, vertical logo right (~130px height)
-- Dark or primary-color background to anchor brand identity
+---
 
-Footer: no spec needed — Developer pastes the mandatory template verbatim.
+## Step 4 — Anchieta brand rules (non-negotiable)
 
-## Step 5 — Micro-interactions (for Developer to implement in vanilla JS)
+Integrate Anchieta identity into the design system:
 
-- Scroll entrance animations via `IntersectionObserver`
-- CountUp on impact numbers
-- Countdown for events with a real date
-- Accordion for FAQ (`aria-expanded`)
-- Testimonials carousel (autoplay + controls)
-- `scroll-behavior: smooth`
-- Back-to-top button (bottom left)
-- WhatsApp floating button (bottom right, `#25D366`, soft pulse, appears after scroll)
+**Header logo (80×80 px):**
+- Determine header background color from the design system
+- Dark background → white logo: `https://anchieta.br/wp-content/uploads/2026/01/cropped-Logo-85-branco.png`
+- Light background → blue logo: `https://anchieta.br/wp-content/uploads/2026/01/cropped-Logo-85-azul-1.png`
 
-## Step 6 — CSS tokens
+**Institutional Anchieta section:**
+- Background: use dark or primary-color variant from the design system
+- Layout: 2-column — text left, vertical logo right (~130px height)
+- Vertical logo URL: `https://anchieta.br/wp-content/uploads/2025/07/Logo-85-anos-vertical-branco.png`
 
-Deliver ready-to-use tokens:
+**Footer:** no spec needed — Developer uses mandatory template from `reference/identidade-anchieta.md`.
+
+---
+
+## Step 5 — CSS tokens
+
+Compile the final tokens from ui-ux-pro-max + anthropic-frontend-design output:
 
 ```css
 :root {
@@ -67,12 +91,32 @@ Deliver ready-to-use tokens:
   --texto: #...;
   --fundo: #...;
   --fundo-alt: #...;
-  --fonte: 'Inter', sans-serif;
+  --fonte-display: '...', sans-serif;
+  --fonte-corpo: '...', sans-serif;
   --container: 1200px;
-  --raio: 14px;
+  --raio: ...px;
 }
 ```
 
-## Closing
-Deliver: CSS tokens + section layout summary + /impeccable shape output.
+---
+
+## Step 6 — Section layout spec
+
+For each section from ESTRATÉGIA, specify: background, layout type, key components, mobile behavior.
+
+---
+
+## ⏸️ CHECKPOINT — Approval required
+
+Before returning to Orchestrator:
+
+1. **Missing data check:** are there any brand decisions (colors, fonts, tone) still unresolved? If yes, surface them now.
+2. **Show the user:** a visual summary of the design system (tokens, style name from ui-ux-pro-max, typography scale).
+3. **Ask:**
+   > "⏸️ Design system pronto com ui-ux-pro-max + anthropic-frontend-design. As cores ficaram assim: [primary], [secondary], [accent]. Estilo: [style name]. Aprova para seguir para as Imagens, ou quer ajustar algo?"
+
+Wait for explicit approval before returning to Orchestrator.
+
+---
+
 Consolidate `DOSSIÊ → DESIGN` and return to Orchestrator.

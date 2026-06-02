@@ -72,3 +72,20 @@ Corpo: ...
 Show the copy to the user (can be summarized if long, highlighting hero, CTAs and FAQ).
 Ask if they want to adjust tone or any promise.
 Consolidate `DOSSIÊ → COPY` and return to Orchestrator.
+
+---
+
+## ⏸️ CHECKPOINT — Approval required
+
+Before returning to Orchestrator:
+
+1. **Show the full output** of this subagent to the user.
+2. **Check for missing data** — if anything required is absent, ask for it now before requesting approval.
+3. **Ask for explicit approval:**
+   > "⏸️ Textos prontos acima. Headline, CTAs e FAQ estão como você esperava? Aprova para seguir para o UI/UX, ou quer ajustar algum texto antes?"
+
+Do NOT advance until the user confirms. If they request changes, apply them and show the updated output before asking again.
+
+---
+
+Consolidate the DOSSIÊ block for this subagent and return to Orchestrator.

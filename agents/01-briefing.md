@@ -52,3 +52,20 @@ On confirmation, consolidate `DOSSIÊ → BRIEFING` and return to Orchestrator.
 
 > Do NOT ask for image links here — that's the Images subagent's job.
 > Do NOT ask for the CRM form — that's the CRM Form subagent's job.
+
+---
+
+## ⏸️ CHECKPOINT — Approval required
+
+Before returning to Orchestrator:
+
+1. **Show the full output** of this subagent to the user.
+2. **Check for missing data** — if anything required is absent, ask for it now before requesting approval.
+3. **Ask for explicit approval:**
+   > "⏸️ Briefing consolidado. Vou mostrar o resumo acima. Está tudo correto ou quer ajustar algum ponto antes de seguirmos para o Formulário?"
+
+Do NOT advance until the user confirms. If they request changes, apply them and show the updated output before asking again.
+
+---
+
+Consolidate the DOSSIÊ block for this subagent and return to Orchestrator.

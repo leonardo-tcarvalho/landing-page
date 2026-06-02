@@ -45,3 +45,20 @@ Always include `FAQPage` with the FAQ questions/answers — helps both search ri
 ## Closing
 Tell user the primary keyword chosen and the Schema type applied.
 Consolidate `DOSSIÊ → SEO` and return to Orchestrator.
+
+---
+
+## ⏸️ CHECKPOINT — Approval required
+
+Before returning to Orchestrator:
+
+1. **Show the full output** of this subagent to the user.
+2. **Check for missing data** — if anything required is absent, ask for it now before requesting approval.
+3. **Ask for explicit approval:**
+   > "⏸️ SEO/GEO configurado — title, meta, Open Graph e Schema prontos. Aprova seguir para o Desenvolvedor gerar o HTML?"
+
+Do NOT advance until the user confirms. If they request changes, apply them and show the updated output before asking again.
+
+---
+
+Consolidate the DOSSIÊ block for this subagent and return to Orchestrator.

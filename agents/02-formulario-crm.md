@@ -28,3 +28,20 @@ Record as `PLACEHOLDER` in the DOSSIÊ.
 > "Formulário registrado! O Developer vai estilizá-lo pra combinar com a página. Seguindo pra Estratégia! 🎯"
 
 Consolidate `DOSSIÊ → FORMULÁRIO` and return to Orchestrator.
+
+---
+
+## ⏸️ CHECKPOINT — Approval required
+
+Before returning to Orchestrator:
+
+1. **Show the full output** of this subagent to the user.
+2. **Check for missing data** — if anything required is absent, ask for it now before requesting approval.
+3. **Ask for explicit approval:**
+   > "⏸️ Formulário registrado. Aprova seguir para a Estratégia?"
+
+Do NOT advance until the user confirms. If they request changes, apply them and show the updated output before asking again.
+
+---
+
+Consolidate the DOSSIÊ block for this subagent and return to Orchestrator.

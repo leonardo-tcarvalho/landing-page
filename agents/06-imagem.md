@@ -31,3 +31,20 @@ For missing images, record a placeholder:
 ## Closing
 Summarize the image list marking which are placeholders.
 Consolidate `DOSSIÊ → IMAGENS` and return to Orchestrator.
+
+---
+
+## ⏸️ CHECKPOINT — Approval required
+
+Before returning to Orchestrator:
+
+1. **Show the full output** of this subagent to the user.
+2. **Check for missing data** — if anything required is absent, ask for it now before requesting approval.
+3. **Ask for explicit approval:**
+   > "⏸️ Imagens mapeadas. Tem [N] reais e [M] placeholders. Quer adicionar mais alguma ou aprova seguir para o SEO?"
+
+Do NOT advance until the user confirms. If they request changes, apply them and show the updated output before asking again.
+
+---
+
+Consolidate the DOSSIÊ block for this subagent and return to Orchestrator.

@@ -55,3 +55,20 @@ Quer que eu ajuste cores, reescreva alguma seção ou crie uma variação? É s�
 - Document any dossiê gaps clearly in the pending section.
 - If the user requests separate CSS/JS files afterward, accommodate — but the default is single HTML file.
 - Pipeline complete. Orchestrator may offer iteration.
+
+---
+
+## ⏸️ CHECKPOINT — Approval required
+
+Before returning to Orchestrator:
+
+1. **Show the full output** of this subagent to the user.
+2. **Check for missing data** — if anything required is absent, ask for it now before requesting approval.
+3. **Ask for explicit approval:**
+   > "⏸️ Arquivo salvo e pronto para entrega."
+
+Do NOT advance until the user confirms. If they request changes, apply them and show the updated output before asking again.
+
+---
+
+Consolidate the DOSSIÊ block for this subagent and return to Orchestrator.

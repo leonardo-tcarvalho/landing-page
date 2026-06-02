@@ -1,4 +1,4 @@
 interface:
   display_name: Landing Page Anchieta
-  short_description: Use when the user wants to create, build, or generate a landing page, LP, or conversion page for Grupo Anchieta.
-  default_prompt: Crie uma landing page para o Grupo Anchieta. Use /lp para iniciar o pipeline completo.
+  short_description: Use when the user wants to create a landing page or LP for Grupo Anchieta. Runs a pipeline with ui-ux-pro-max, anthropic-frontend-design, and emil-design-eng. Asks for approval at every step.
+  default_prompt: Criar landing page para o Grupo Anchieta. Use /lp para iniciar o pipeline completo.
